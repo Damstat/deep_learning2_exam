@@ -8,16 +8,13 @@ class SpeechToText:
 
         model_name = "jonatasgrosman/wav2vec2-large-xlsr-53-french"
 
-        self.processor = Wav2Vec2Processor.from_pretrained(
-            model_name
-        )
+        self.processor = Wav2Vec2Processor.from_pretrained(model_name)
 
-        self.model = AutoModelForCTC.from_pretrained(
-            model_name
-        )
+        self.model = AutoModelForCTC.from_pretrained(model_name)
 
+        self.model.eval()
 
-    def transcribe(self, waveform):
+    def predict(self, waveform):
 
         inputs = self.processor(
             waveform.squeeze().numpy(),
@@ -28,13 +25,10 @@ class SpeechToText:
         with torch.no_grad():
             logits = self.model(**inputs).logits
 
-
         predicted_ids = torch.argmax(logits, dim=-1)
-
 
         transcription = self.processor.batch_decode(
             predicted_ids
         )[0]
-
 
         return transcription.lower()
