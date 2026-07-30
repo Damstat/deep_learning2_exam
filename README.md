@@ -91,11 +91,6 @@ deep_learning2_exam/
 ├── app.py
 ├── main.py
 │
-├── test_audio.py
-├── test_asr.py
-├── test_sentiment.py
-├── test_pipeline.py
-│
 ├── requirements.txt
 ├── pyproject.toml
 ├── poetry.lock
