@@ -209,52 +209,41 @@ Permet de lancer :
 ---
 
 #  Modèles utilisés
+1. Reconnaissance automatique de la parole (ASR)
 
-## 1. Reconnaissance vocale (ASR)
+Modèle :
 
-**Nom :**
-
-```
 jonatasgrosman/wav2vec2-large-xlsr-53-french
-```
+
+Type : Wav2Vec2 (CTC)
 
 Description :
 
-Modèle Wav2Vec2 pré-entraîné pour la reconnaissance automatique de la parole en français.
+Ce modèle est un modèle pré-entraîné de reconnaissance automatique de la parole (Automatic Speech Recognition - ASR). Il convertit directement un signal audio en texte en français. Il est basé sur l'architecture Wav2Vec2 développée par Meta AI et a été adapté à la langue française.
 
 Lien Hugging Face :
 
 https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-french
 
----
+2. Analyse de sentiment
 
-## 2. Analyse de sentiment
+Modèle :
 
-**Nom :**
+ac0hik/Sentiment_Analysis_French
 
-```
-nlptown/bert-base-multilingual-uncased-sentiment
-```
+Architecture :
+
+BERT finetuné pour la classification de sentiment en français.
 
 Description :
 
-Modèle BERT multilingue permettant de classifier un texte selon cinq niveaux de sentiment.
+Ce modèle est un modèle BERT spécialisé dans l'analyse de sentiment de textes en français. Après la transcription réalisée par Wav2Vec2, le texte est transmis à ce modèle qui prédit directement le sentiment associé ainsi que son score de confiance.
 
-Dans ce projet, les cinq classes sont regroupées en trois :
-
-| Classe originale | Classe finale |
-| ---------------- | ------------- |
-| 1 étoile         | Négative      |
-| 2 étoiles        | Négative      |
-| 3 étoiles        | Neutre        |
-| 4 étoiles        | Positive      |
-| 5 étoiles        | Positive      |
+Contrairement à un modèle BERT générique, celui-ci a déjà été entraîné (fine-tuning) pour une tâche de classification de sentiment, ce qui le rend particulièrement adapté à cette application.
 
 Lien Hugging Face :
 
-https://huggingface.co/nlptown/bert-base-multilingual-uncased-sentiment
-
----
+https://huggingface.co/ac0hik/Sentiment_Analysis_French
 
 #  Technologies utilisées
 
